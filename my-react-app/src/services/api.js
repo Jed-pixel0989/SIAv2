@@ -3,11 +3,12 @@
 // Returns true when running on a known cloud/static host (no PHP backend available)
 const isCloudDeployment = () => {
   const host = window.location.hostname
+  const port = Number(window.location.port)
   return (
     host.endsWith('.vercel.app') ||
     host.endsWith('.netlify.app') ||
     host.endsWith('.pages.dev') ||
-    host === 'localhost' && Number(window.location.port) === 4173 // vite preview without XAMPP
+    (host === 'localhost' && port === 4173) // vite preview without XAMPP
   )
 }
 
