@@ -1,9 +1,8 @@
 {
-  "root": "my-react-app",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "framework": "vite",
+  "buildCommand": "cd my-react-app && npm install && npm run build",
+  "outputDirectory": "my-react-app/dist",
+  "installCommand": "",
+  "framework": null,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
