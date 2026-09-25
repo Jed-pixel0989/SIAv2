@@ -1,29 +1,40 @@
 // Central Mock Data Store for Utility Management System
+// Converted from SQL schema (database/schema.sql) and seed data (database/seed.sql)
 
+// ─── 1. TARIFF CONFIGURATION (tariff_rates) ───────────────────────────────────
 export const initialTariff = {
   residential: {
-    minCharge: 180.00, // first 10 cu.m
+    minCharge: 180.00,   // base fee for first 10 m³
     minCuM: 10,
-    bracket1: 22.50, // 11-20 cu.m
-    bracket2: 28.00, // 21-30 cu.m
-    bracket3: 35.00, // 31+ cu.m
+    bracket1: 22.50,     // 11–20 m³
+    bracket2: 28.00,     // 21–30 m³
+    bracket3: 35.00,     // 31+ m³
   },
   commercial: {
-    minCharge: 360.00, // first 10 cu.m
+    minCharge: 360.00,
     minCuM: 10,
     bracket1: 42.00,
     bracket2: 52.00,
     bracket3: 65.00,
   },
-  environmentalFeeRate: 0.10, // 10%
+  institutional: {
+    minCharge: 250.00,
+    minCuM: 10,
+    bracket1: 30.00,
+    bracket2: 38.00,
+    bracket3: 48.00,
+  },
+  environmentalFeeRate: 0.10,   // 10%
   meterMaintenanceFee: 25.00,
-  overduePenaltyRate: 0.10, // 10% penalty on overdue base
+  overduePenaltyRate: 0.10,     // 10%
 }
 
+// ─── 2. CONSUMERS (consumers) ─────────────────────────────────────────────────
 export const initialConsumers = [
   {
     id: 'C-1001',
     accountNo: 'ACC-88201',
+    username: 'amina.okafor',
     name: 'Amina Okafor',
     contact: '+63 917 234 5678',
     address: 'Block 4 Lot 12, Riverdale Heights',
@@ -32,6 +43,8 @@ export const initialConsumers = [
     classification: 'Residential',
     meterNo: 'MTR-77291',
     status: 'Active',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2024-03-15',
     lastReading: 148,
     avatar: 'AO',
@@ -39,6 +52,7 @@ export const initialConsumers = [
   {
     id: 'C-1002',
     accountNo: 'ACC-88202',
+    username: 'caleb.mensah',
     name: 'Caleb Mensah',
     contact: '+63 928 345 6789',
     address: '15 Magsaysay St., Barangay Riverside',
@@ -47,6 +61,8 @@ export const initialConsumers = [
     classification: 'Residential',
     meterNo: 'MTR-77292',
     status: 'Overdue',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2023-11-20',
     lastReading: 215,
     avatar: 'CM',
@@ -54,6 +70,7 @@ export const initialConsumers = [
   {
     id: 'C-1003',
     accountNo: 'ACC-88203',
+    username: 'lina.santos',
     name: 'Lina Santos',
     contact: '+63 919 456 7890',
     address: '74 Hillcrest Drive, Hillview',
@@ -62,6 +79,8 @@ export const initialConsumers = [
     classification: 'Commercial',
     meterNo: 'MTR-77293',
     status: 'Active',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2024-01-10',
     lastReading: 342,
     avatar: 'LS',
@@ -69,6 +88,7 @@ export const initialConsumers = [
   {
     id: 'C-1004',
     accountNo: 'ACC-88204',
+    username: null,
     name: 'Marco Dela Cruz',
     contact: '+63 905 567 8901',
     address: '89 Commercial Hub, East Market',
@@ -77,6 +97,8 @@ export const initialConsumers = [
     classification: 'Commercial',
     meterNo: 'MTR-77294',
     status: 'Active',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2023-08-04',
     lastReading: 198,
     avatar: 'MD',
@@ -84,6 +106,7 @@ export const initialConsumers = [
   {
     id: 'C-1005',
     accountNo: 'ACC-88205',
+    username: null,
     name: 'Elena Rostova',
     contact: '+63 945 678 9012',
     address: '22 Palm Grove Avenue',
@@ -92,6 +115,8 @@ export const initialConsumers = [
     classification: 'Residential',
     meterNo: 'MTR-77295',
     status: 'Active',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2024-05-18',
     lastReading: 89,
     avatar: 'ER',
@@ -99,6 +124,7 @@ export const initialConsumers = [
   {
     id: 'C-1006',
     accountNo: 'ACC-88206',
+    username: 'danilo.aquino',
     name: 'Danilo Aquino',
     contact: '+63 918 789 0123',
     address: '44 Fisherman Wharf',
@@ -107,6 +133,8 @@ export const initialConsumers = [
     classification: 'Residential',
     meterNo: 'MTR-77296',
     status: 'Overdue',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2022-09-12',
     lastReading: 412,
     avatar: 'DA',
@@ -114,6 +142,7 @@ export const initialConsumers = [
   {
     id: 'C-1007',
     accountNo: 'ACC-88207',
+    username: null,
     name: 'Sophia Villanueva',
     contact: '+63 920 890 1234',
     address: '101 Summit Ridge, Hillview',
@@ -122,6 +151,8 @@ export const initialConsumers = [
     classification: 'Residential',
     meterNo: 'MTR-77297',
     status: 'Active',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2024-02-28',
     lastReading: 165,
     avatar: 'SV',
@@ -129,6 +160,7 @@ export const initialConsumers = [
   {
     id: 'C-1008',
     accountNo: 'ACC-88208',
+    username: null,
     name: 'Victor Tan Bakery',
     contact: '+63 917 901 2345',
     address: '12 Central Plaza, East Market',
@@ -137,12 +169,15 @@ export const initialConsumers = [
     classification: 'Commercial',
     meterNo: 'MTR-77298',
     status: 'Active',
+    approvalStatus: 'Approved',
+    locationApprovalStatus: 'None',
     connectionDate: '2023-04-14',
     lastReading: 512,
     avatar: 'VT',
   },
 ]
 
+// ─── 3. METER ASSETS (meter_assets + meter_calibrations) ─────────────────────
 export const initialMeters = [
   {
     serialNo: 'MTR-77291',
@@ -157,8 +192,8 @@ export const initialMeters = [
     nextCalibration: '2027-03-10',
     status: 'Active',
     history: [
-      { date: '2024-03-15', type: 'Installation', technician: 'R. Ramos', notes: 'Initial installation completed without issue.' },
-      { date: '2025-03-10', type: 'Routine Calibration', technician: 'T. Cruz', notes: 'Calibrated with +/- 0.5% margin accuracy.' },
+      { date: '2024-03-15', type: 'Installation',        technician: 'Roberto Ramos', accuracyMargin: '+/- 0.3%', result: 'Passed',       notes: 'Initial installation inspection completed without issue.' },
+      { date: '2025-03-10', type: 'Routine Calibration', technician: 'Tomas Cruz',   accuracyMargin: '+/- 0.4%', result: 'Passed',       notes: 'Calibrated on mobile test bench; certified margin compliant.' },
     ],
   },
   {
@@ -174,8 +209,8 @@ export const initialMeters = [
     nextCalibration: '2026-11-15',
     status: 'Active',
     history: [
-      { date: '2023-11-20', type: 'Installation', technician: 'J. Reyes', notes: 'Installed with backflow preventer.' },
-      { date: '2024-11-15', type: 'Calibration', technician: 'T. Cruz', notes: 'Flow rate verified within standards.' },
+      { date: '2023-11-20', type: 'Installation', technician: 'Gil Santos', accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'Installed with dual-check backflow preventer.' },
+      { date: '2024-11-15', type: 'Calibration',  technician: 'Tomas Cruz', accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'Flow rate verified within standards.' },
     ],
   },
   {
@@ -191,8 +226,8 @@ export const initialMeters = [
     nextCalibration: '2026-07-08',
     status: 'Calibration Due',
     history: [
-      { date: '2024-01-10', type: 'Installation', technician: 'G. Santos', notes: 'Commercial line connection.' },
-      { date: '2025-01-08', type: 'Annual Calibration', technician: 'T. Cruz', notes: 'Passed with minor dial adjustment.' },
+      { date: '2024-01-10', type: 'Installation',     technician: 'Gil Santos',  accuracyMargin: '+/- 0.5%', result: 'Passed',        notes: 'Commercial line connection.' },
+      { date: '2025-01-08', type: 'Annual Calibration', technician: 'Tomas Cruz', accuracyMargin: '+/- 0.8%', result: 'Needs Overhaul', notes: 'Passed with minor dial adjustment; scheduled for replacement next cycle.' },
     ],
   },
   {
@@ -208,7 +243,7 @@ export const initialMeters = [
     nextCalibration: '2026-08-01',
     status: 'Active',
     history: [
-      { date: '2023-08-04', type: 'Installation', technician: 'R. Ramos', notes: 'Commercial water meter installed.' },
+      { date: '2023-08-04', type: 'Installation', technician: 'Roberto Ramos', accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'Commercial water meter installed.' },
     ],
   },
   {
@@ -224,7 +259,7 @@ export const initialMeters = [
     nextCalibration: '2026-05-18',
     status: 'Active',
     history: [
-      { date: '2024-05-18', type: 'Installation', technician: 'J. Reyes', notes: 'Factory calibrated seal intact.' },
+      { date: '2024-05-18', type: 'Installation', technician: 'Roberto Ramos', accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'Factory calibrated seal intact.' },
     ],
   },
   {
@@ -240,8 +275,8 @@ export const initialMeters = [
     nextCalibration: '2025-09-10',
     status: 'Under Repair',
     history: [
-      { date: '2022-09-12', type: 'Installation', technician: 'G. Santos', notes: 'Standard residential meter.' },
-      { date: '2026-08-28', type: 'Repair Scheduled', technician: 'R. Ramos', notes: 'Consumer reported slight condensation under glass.' },
+      { date: '2022-09-12', type: 'Installation',    technician: 'Gil Santos',    accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'Standard residential meter.' },
+      { date: '2026-08-28', type: 'Repair Scheduled', technician: 'Roberto Ramos', accuracyMargin: '+/- 1.4%', result: 'Failed', notes: 'Consumer reported glass fogging and condensation.' },
     ],
   },
   {
@@ -257,7 +292,7 @@ export const initialMeters = [
     nextCalibration: '2026-02-28',
     status: 'Active',
     history: [
-      { date: '2024-02-28', type: 'Installation', technician: 'T. Cruz', notes: 'New residential service.' },
+      { date: '2024-02-28', type: 'Installation', technician: 'Tomas Cruz', accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'New residential service.' },
     ],
   },
   {
@@ -273,22 +308,24 @@ export const initialMeters = [
     nextCalibration: '2026-10-10',
     status: 'Active',
     history: [
-      { date: '2023-04-14', type: 'Installation', technician: 'G. Santos', notes: 'High flow bakery connection.' },
+      { date: '2023-04-14', type: 'Installation', technician: 'Gil Santos', accuracyMargin: '+/- 0.5%', result: 'Passed', notes: 'High flow bakery connection.' },
     ],
   },
 ]
 
+// ─── 4. GEO PINS (geo_connections) ───────────────────────────────────────────
 export const initialGeoPins = [
-  { id: 'GP-1', consumerId: 'C-1001', name: 'Amina Okafor', zone: 'Mabuhay', cluster: 'Mabuhay', lat: 6.5075, lng: 124.8755, x: 26, y: 28, status: 'Normal', meterNo: 'MTR-77291', reading: 148 },
-  { id: 'GP-2', consumerId: 'C-1002', name: 'Caleb Mensah', zone: 'Riverside', cluster: 'Pag-asa', lat: 6.5065, lng: 124.9360, x: 64, y: 30, status: 'Overdue', meterNo: 'MTR-77292', reading: 215 },
-  { id: 'GP-3', consumerId: 'C-1003', name: 'Lina Santos', zone: 'Hillview', cluster: 'Maligaya', lat: 6.4565, lng: 124.8775, x: 73, y: 64, status: 'Normal', meterNo: 'MTR-77293', reading: 342 },
-  { id: 'GP-4', consumerId: 'C-1004', name: 'Marco Dela Cruz', zone: 'East Market', cluster: 'Pagkakaisa', lat: 6.4555, lng: 124.9355, x: 38, y: 72, status: 'Normal', meterNo: 'MTR-77294', reading: 198 },
-  { id: 'GP-5', consumerId: 'C-1005', name: 'Elena Rostova', zone: 'Mabuhay', cluster: 'Mabuhay', lat: 6.5055, lng: 124.8830, x: 18, y: 38, status: 'Normal', meterNo: 'MTR-77295', reading: 89 },
-  { id: 'GP-6', consumerId: 'C-1006', name: 'Danilo Aquino', zone: 'Riverside', cluster: 'Bungkalon', lat: 6.4055, lng: 124.8825, x: 82, y: 22, status: 'Maintenance', meterNo: 'MTR-77296', reading: 412 },
-  { id: 'GP-7', consumerId: 'C-1007', name: 'Sophia Villanueva', zone: 'Hillview', cluster: 'Masagana', lat: 6.4055, lng: 124.9385, x: 84, y: 75, status: 'Normal', meterNo: 'MTR-77297', reading: 165 },
-  { id: 'GP-8', consumerId: 'C-1008', name: 'Victor Tan Bakery', zone: 'East Market', cluster: 'Milina', lat: 6.3555, lng: 124.9030, x: 48, y: 84, status: 'Normal', meterNo: 'MTR-77298', reading: 512 },
+  { id: 'GP-1', consumerId: 'C-1001', name: 'Amina Okafor',     zone: 'Mabuhay',    cluster: 'Mabuhay',     lat: 14.618500, lng: 121.032000, x: 26, y: 28, status: 'Normal',      meterNo: 'MTR-77291', reading: 148 },
+  { id: 'GP-2', consumerId: 'C-1002', name: 'Caleb Mensah',     zone: 'Riverside',   cluster: 'Pag-asa',     lat: 14.595000, lng: 121.054000, x: 64, y: 30, status: 'Overdue',     meterNo: 'MTR-77292', reading: 215 },
+  { id: 'GP-3', consumerId: 'C-1003', name: 'Lina Santos',      zone: 'Hillview',    cluster: 'Maligaya',    lat: 14.582000, lng: 121.062000, x: 73, y: 64, status: 'Normal',      meterNo: 'MTR-77293', reading: 342 },
+  { id: 'GP-4', consumerId: 'C-1004', name: 'Marco Dela Cruz',  zone: 'East Market', cluster: 'Pagkakaisa',  lat: 14.575000, lng: 121.038000, x: 38, y: 72, status: 'Normal',      meterNo: 'MTR-77294', reading: 198 },
+  { id: 'GP-5', consumerId: 'C-1005', name: 'Elena Rostova',    zone: 'Mabuhay',    cluster: 'Mabuhay',     lat: 14.624000, lng: 121.026000, x: 18, y: 38, status: 'Normal',      meterNo: 'MTR-77295', reading: 89  },
+  { id: 'GP-6', consumerId: 'C-1006', name: 'Danilo Aquino',    zone: 'Riverside',   cluster: 'Bungkalon',   lat: 14.602000, lng: 121.061000, x: 82, y: 22, status: 'Maintenance', meterNo: 'MTR-77296', reading: 412 },
+  { id: 'GP-7', consumerId: 'C-1007', name: 'Sophia Villanueva',zone: 'Hillview',    cluster: 'Masagana',    lat: 14.579000, lng: 121.071000, x: 84, y: 75, status: 'Normal',      meterNo: 'MTR-77297', reading: 165 },
+  { id: 'GP-8', consumerId: 'C-1008', name: 'Victor Tan Bakery',zone: 'East Market', cluster: 'Milina',      lat: 14.571000, lng: 121.045000, x: 48, y: 84, status: 'Normal',      meterNo: 'MTR-77298', reading: 512 },
 ]
 
+// ─── 5. BILLING STATEMENTS (bills) ───────────────────────────────────────────
 export const initialBills = [
   {
     id: 'WS-240981',
@@ -299,7 +336,7 @@ export const initialBills = [
     period: 'Aug 01 – Aug 31, 2026',
     prevReading: 124,
     presReading: 148,
-    consumption: 24, // cu.m
+    consumption: 24,
     baseAmount: 1317.00,
     envFee: 131.70,
     maintFee: 25.00,
@@ -308,6 +345,7 @@ export const initialBills = [
     totalAmount: 1473.70,
     status: 'Ready',
     dueDate: '2026-09-20',
+    paidDate: null,
     avatar: 'AO',
     daysOverdue: 0,
   },
@@ -325,10 +363,11 @@ export const initialBills = [
     envFee: 82.85,
     maintFee: 25.00,
     arrears: 0.00,
-    penalty: 82.85, // 10% penalty
-    totalAmount: 936.35,
+    penalty: 82.85,
+    totalAmount: 1019.20,
     status: 'Overdue',
     dueDate: '2026-08-20',
+    paidDate: null,
     avatar: 'CM',
     daysOverdue: 14,
   },
@@ -350,6 +389,7 @@ export const initialBills = [
     totalAmount: 2108.00,
     status: 'Ready',
     dueDate: '2026-09-22',
+    paidDate: null,
     avatar: 'LS',
     daysOverdue: 0,
   },
@@ -371,10 +411,10 @@ export const initialBills = [
     totalAmount: 744.40,
     status: 'Paid',
     dueDate: '2026-09-18',
+    paidDate: '2026-09-02',
+    receiptNo: 'OR-2026-9041',
     avatar: 'MD',
     daysOverdue: 0,
-    paidDate: '2026-09-02',
-    receiptNo: 'OR-2026-9042',
   },
   {
     id: 'WS-240955',
@@ -390,19 +430,21 @@ export const initialBills = [
     envFee: 168.00,
     maintFee: 25.00,
     arrears: 1250.00,
-    penalty: 293.00, // 10% on current base + arrears
+    penalty: 293.00,
     totalAmount: 3416.00,
     status: 'Overdue',
     dueDate: '2026-07-20',
+    paidDate: null,
     avatar: 'DA',
     daysOverdue: 45,
   },
 ]
 
+// ─── 6. PAYMENT TRANSACTIONS (payments) ──────────────────────────────────────
 export const initialPayments = [
   {
     id: 'PAY-3001',
-    orNumber: 'OR-2026-9042',
+    orNumber: 'OR-2026-9041',
     billId: 'WS-240966',
     consumerId: 'C-1004',
     consumerName: 'Marco Dela Cruz',
@@ -413,10 +455,11 @@ export const initialPayments = [
     method: 'Cash',
     cashier: 'Jamie Dizon',
     timestamp: '2026-09-02 14:28:10',
+    notes: 'Over-the-counter bill settlement.',
   },
   {
     id: 'PAY-3000',
-    orNumber: 'OR-2026-9041',
+    orNumber: 'OR-2026-9040',
     billId: 'WS-240890',
     consumerId: 'C-1005',
     consumerName: 'Elena Rostova',
@@ -427,9 +470,11 @@ export const initialPayments = [
     method: 'GCash',
     cashier: 'Jamie Dizon',
     timestamp: '2026-09-02 10:15:45',
+    notes: 'Digital wallet instant settlement.',
   },
 ]
 
+// ─── 7. MAINTENANCE & COMPLAINT TICKETS (maintenance_tickets) ─────────────────
 export const initialComplaints = [
   {
     id: 'TKT-501',
@@ -443,8 +488,10 @@ export const initialComplaints = [
     status: 'In Progress',
     assignedTech: 'Roberto Ramos',
     reportedAt: '2026-09-03 08:42',
+    resolvedAt: null,
     description: 'Mainline pressure drop observed in Sector 4 branch line.',
     notes: 'Technician dispatched to inspect pressure valve regulator #3.',
+    resolutionImage: null,
   },
   {
     id: 'TKT-502',
@@ -458,8 +505,10 @@ export const initialComplaints = [
     status: 'Dispatched',
     assignedTech: 'Tomas Cruz',
     reportedAt: '2026-09-03 06:15',
+    resolvedAt: null,
     description: 'Consumer requested annual checkup before peak season.',
     notes: 'Work order printed and queued for field calibration van.',
+    resolutionImage: null,
   },
   {
     id: 'TKT-503',
@@ -473,8 +522,10 @@ export const initialComplaints = [
     status: 'Resolved',
     assignedTech: 'Gil Santos',
     reportedAt: '2026-09-02 13:20',
+    resolvedAt: '2026-09-02 17:45',
     description: 'Minor moisture leak near water meter shutoff valve.',
     notes: 'Replaced Teflon seal and tightened union connector. Tested leak-free.',
+    resolutionImage: null,
   },
   {
     id: 'TKT-504',
@@ -488,11 +539,14 @@ export const initialComplaints = [
     status: 'Resolved',
     assignedTech: 'Roberto Ramos',
     reportedAt: '2026-09-01 11:00',
+    resolvedAt: '2026-09-01 14:30',
     description: 'Slight turbidity after municipal mainline maintenance.',
     notes: 'Flushed fire hydrant for 5 minutes. Water cleared and turbidity tested 0.4 NTU.',
+    resolutionImage: null,
   },
 ]
 
+// ─── 8. AUDIT TRAIL (audit_trail) ─────────────────────────────────────────────
 export const initialAuditLogs = [
   {
     id: 'AUD-901',
@@ -523,7 +577,7 @@ export const initialAuditLogs = [
     role: 'Cashier / POS',
     category: 'Payment',
     action: 'Processed Counter Payment',
-    target: 'OR-2026-9042 / Marco Dela Cruz',
+    target: 'OR-2026-9041 / Marco Dela Cruz',
     details: 'Received ₱ 744.40 cash payment. Bill WS-240966 updated to PAID.',
     ip: 'POS-TERMINAL-01',
   },
@@ -551,80 +605,86 @@ export const initialAuditLogs = [
   },
 ]
 
-// ─── HR / Staff Records ──────────────────────────────────────────────────────
+// ─── 9. STAFF / HR RECORDS (users) ───────────────────────────────────────────
 export const initialStaff = [
-  { id: 'STF-01', fullName: 'Jamie Dizon',    role: 'Administrator', status: 'Active', contact: '+63 917 111 0001', zone: 'All',         joinDate: '2020-01-10', openTickets: 0 },
-  { id: 'STF-02', fullName: 'Roberto Ramos',  role: 'Field Staffs',  status: 'Active', contact: '+63 917 111 0002', zone: 'Mabuhay',   joinDate: '2021-03-22', openTickets: 2 },
-  { id: 'STF-03', fullName: 'Tomas Cruz',     role: 'Field Staffs',  status: 'Active', contact: '+63 917 111 0003', zone: 'Hillview',    joinDate: '2021-06-15', openTickets: 1 },
-  { id: 'STF-04', fullName: 'Gil Santos',     role: 'Field Staffs',  status: 'Active', contact: '+63 917 111 0004', zone: 'Riverside',   joinDate: '2022-02-28', openTickets: 0 },
-  { id: 'STF-05', fullName: 'Maria Reyes',    role: 'Office Staffs', status: 'Active', contact: '+63 917 111 0005', zone: 'All',         joinDate: '2022-08-01', openTickets: 0 },
-  { id: 'STF-06', fullName: 'Ana Fernandez',  role: 'Cashier',       status: 'Active', contact: '+63 917 111 0006', zone: 'All',         joinDate: '2023-01-05', openTickets: 0 },
+  { id: 'STF-01', fullName: 'Jamie Dizon',    role: 'Administrator', status: 'Active',   contact: '+63 917 111 2233', zone: 'All',         joinDate: '2020-01-10', openTickets: 0 },
+  { id: 'STF-02', fullName: 'Roberto Ramos',  role: 'Field Staffs',  status: 'Active',   contact: '+63 918 222 3344', zone: 'Mabuhay',    joinDate: '2021-03-22', openTickets: 2 },
+  { id: 'STF-03', fullName: 'Tomas Cruz',     role: 'Field Staffs',  status: 'Active',   contact: '+63 919 333 4455', zone: 'Hillview',   joinDate: '2021-06-15', openTickets: 1 },
+  { id: 'STF-04', fullName: 'Gil Santos',     role: 'Field Staffs',  status: 'Active',   contact: '+63 920 444 5566', zone: 'Riverside',  joinDate: '2022-02-28', openTickets: 0 },
+  { id: 'STF-05', fullName: 'Maria Reyes',    role: 'Office Staffs', status: 'Active',   contact: '+63 917 111 0005', zone: 'All',         joinDate: '2022-08-01', openTickets: 0 },
+  { id: 'STF-06', fullName: 'Ana Fernandez',  role: 'Cashier',       status: 'Active',   contact: '+63 921 555 6677', zone: 'All',         joinDate: '2023-01-05', openTickets: 0 },
   { id: 'STF-07', fullName: 'Ben Ocampo',     role: 'Field Staffs',  status: 'Inactive', contact: '+63 917 111 0007', zone: 'East Market', joinDate: '2020-07-19', openTickets: 0 },
 ]
 
-// ─── Notifications Log ────────────────────────────────────────────────────────
+// ─── 10. NOTIFICATIONS (notifications) ────────────────────────────────────────
 export const initialNotifications = [
-  { id: 'NTF-001', type: 'Billing Notice',   recipient: 'Amina Okafor',   accountNo: 'ACC-88201', message: 'Your bill for Aug 2026 amounting to ₱1,473.70 is due on Sep 20, 2026.', sentAt: '2026-09-01 08:00', status: 'Sent', channel: 'SMS' },
-  { id: 'NTF-002', type: 'Overdue Notice',   recipient: 'Caleb Mensah',   accountNo: 'ACC-88202', message: 'Your account is overdue by 14 days. Please settle ₱936.35 immediately.', sentAt: '2026-09-03 09:00', status: 'Sent', channel: 'SMS' },
-  { id: 'NTF-003', type: 'Overdue Notice',   recipient: 'Danilo Aquino',  accountNo: 'ACC-88206', message: 'URGENT: Your account is 45 days overdue. Balance ₱3,416.00. Risk of disconnection.', sentAt: '2026-09-03 09:01', status: 'Sent', channel: 'SMS' },
-  { id: 'NTF-004', type: 'Payment Reminder', recipient: 'Lina Santos',    accountNo: 'ACC-88203', message: 'Friendly reminder: Your bill of ₱2,108.00 is due in 5 days on Sep 22.', sentAt: '2026-09-17 10:00', status: 'Sent', channel: 'Email' },
-  { id: 'NTF-005', type: 'Billing Notice',   recipient: 'Elena Rostova',  accountNo: 'ACC-88205', message: 'Your Aug 2026 bill has been generated. Due date: Sep 20, 2026.', sentAt: '2026-09-01 08:05', status: 'Sent', channel: 'SMS' },
+  { id: 'NTF-001', type: 'Billing Notice',   recipient: 'Amina Okafor',   accountNo: 'ACC-88201', message: 'Your bill for Aug 2026 amounting to ₱1,473.70 is due on Sep 20, 2026.',              sentAt: '2026-09-01 08:00', status: 'Sent', channel: 'SMS'   },
+  { id: 'NTF-002', type: 'Overdue Notice',   recipient: 'Caleb Mensah',   accountNo: 'ACC-88202', message: 'Your account is overdue by 14 days. Please settle ₱1,019.20 immediately.',           sentAt: '2026-09-03 09:00', status: 'Sent', channel: 'SMS'   },
+  { id: 'NTF-003', type: 'Overdue Notice',   recipient: 'Danilo Aquino',  accountNo: 'ACC-88206', message: 'URGENT: Your account is 45 days overdue. Balance ₱3,416.00. Risk of disconnection.', sentAt: '2026-09-03 09:01', status: 'Sent', channel: 'SMS'   },
+  { id: 'NTF-004', type: 'Payment Reminder', recipient: 'Lina Santos',    accountNo: 'ACC-88203', message: 'Friendly reminder: Your bill of ₱2,108.00 is due in 5 days on Sep 22.',              sentAt: '2026-09-17 10:00', status: 'Sent', channel: 'Email' },
+  { id: 'NTF-005', type: 'Billing Notice',   recipient: 'Elena Rostova',  accountNo: 'ACC-88205', message: 'Your Aug 2026 bill has been generated. Due date: Sep 20, 2026.',                     sentAt: '2026-09-01 08:05', status: 'Sent', channel: 'SMS'   },
 ]
 
-// ─── Billing Adjustments ──────────────────────────────────────────────────────
+// ─── 11. BILLING ADJUSTMENTS (billing_adjustments) ───────────────────────────
 export const initialAdjustments = [
-  { id: 'ADJ-01', billId: 'WS-240977', consumerName: 'Caleb Mensah',  accountNo: 'ACC-88202', reason: 'Meter Reading Error',       adjustmentAmount: -82.85, requestedBy: 'Maria Reyes',   approvedBy: null,          status: 'Pending',  createdAt: '2026-09-04 11:00' },
-  { id: 'ADJ-02', billId: 'WS-240955', consumerName: 'Danilo Aquino', accountNo: 'ACC-88206', reason: 'Goodwill Penalty Waiver',   adjustmentAmount: -293.00, requestedBy: 'Jamie Dizon',  approvedBy: 'President',   status: 'Approved', createdAt: '2026-09-03 15:30' },
-  { id: 'ADJ-03', billId: 'WS-240981', consumerName: 'Amina Okafor',  accountNo: 'ACC-88201', reason: 'Environmental Fee Dispute', adjustmentAmount: -131.70, requestedBy: 'Maria Reyes',   approvedBy: null,          status: 'Pending',  createdAt: '2026-09-05 09:00' },
+  { id: 'ADJ-01', billId: 'WS-240977', consumerName: 'Caleb Mensah',  accountNo: 'ACC-88202', reason: 'Meter Reading Error',       adjustmentAmount: -82.85,  requestedBy: 'Maria Reyes',  approvedBy: null,       status: 'Pending',  createdAt: '2026-09-04 11:00' },
+  { id: 'ADJ-02', billId: 'WS-240955', consumerName: 'Danilo Aquino', accountNo: 'ACC-88206', reason: 'Goodwill Penalty Waiver',   adjustmentAmount: -293.00, requestedBy: 'Jamie Dizon', approvedBy: 'President', status: 'Approved', createdAt: '2026-09-03 15:30' },
+  { id: 'ADJ-03', billId: 'WS-240981', consumerName: 'Amina Okafor',  accountNo: 'ACC-88201', reason: 'Environmental Fee Dispute', adjustmentAmount: -131.70, requestedBy: 'Maria Reyes',  approvedBy: null,       status: 'Pending',  createdAt: '2026-09-05 09:00' },
 ]
 
-// ─── Service Ratings ──────────────────────────────────────────────────────────
+// ─── 12. SERVICE RATINGS (service_ratings) ────────────────────────────────────
 export const initialRatings = [
-  { id: 'RAT-01', ticketNo: 'SR-2026-0180', consumerId: 'C-1001', consumerName: 'Amina Okafor',     rating: 5, feedback: 'Very fast response! Technician was polite and professional.', createdAt: '2026-09-03 16:00' },
-  { id: 'RAT-02', ticketNo: 'SR-2026-0179', consumerId: 'C-1008', consumerName: 'Victor Tan Bakery', rating: 4, feedback: 'Good job clearing the discoloration. Took a bit longer than expected.', createdAt: '2026-09-02 14:00' },
+  { id: 'RAT-01', ticketNo: 'SR-2026-0180', consumerId: 'C-1001', consumerName: 'Amina Okafor',      rating: 5, feedback: 'Very fast response! Technician was polite and professional.',             createdAt: '2026-09-03 16:00' },
+  { id: 'RAT-02', ticketNo: 'SR-2026-0179', consumerId: 'C-1008', consumerName: 'Victor Tan Bakery', rating: 4, feedback: 'Good job clearing the discoloration. Took a bit longer than expected.',   createdAt: '2026-09-02 14:00' },
 ]
 
-// ─── Consumer Portal Accounts (House Hold role) ───────────────────────────────
+// ─── 13. CONSUMER PORTAL ACCOUNTS ────────────────────────────────────────────
 // Maps portal login credentials to an existing consumer record
 export const consumerPortalAccounts = [
-  { username: 'amina.okafor',   password: 'pass1234', consumerId: 'C-1001', fullName: 'Amina Okafor',    role: 'House Hold' },
-  { username: 'caleb.mensah',   password: 'pass1234', consumerId: 'C-1002', fullName: 'Caleb Mensah',    role: 'House Hold' },
-  { username: 'lina.santos',    password: 'pass1234', consumerId: 'C-1003', fullName: 'Lina Santos',     role: 'House Hold' },
-  { username: 'danilo.aquino',  password: 'pass1234', consumerId: 'C-1006', fullName: 'Danilo Aquino',   role: 'House Hold' },
+  { username: 'amina.okafor',  password: 'pass1234', consumerId: 'C-1001', fullName: 'Amina Okafor',  role: 'House Hold' },
+  { username: 'caleb.mensah',  password: 'pass1234', consumerId: 'C-1002', fullName: 'Caleb Mensah',  role: 'House Hold' },
+  { username: 'lina.santos',   password: 'pass1234', consumerId: 'C-1003', fullName: 'Lina Santos',   role: 'House Hold' },
+  { username: 'danilo.aquino', password: 'pass1234', consumerId: 'C-1006', fullName: 'Danilo Aquino', role: 'House Hold' },
 ]
 
-// Consumption calculation utility function
+// ─── UTILITY: Consumption Bill Calculator ─────────────────────────────────────
 export function calculateConsumptionBill(prevReading, presReading, classification = 'Residential', tariff = initialTariff) {
   const prev = Number(prevReading) || 0
   const pres = Number(presReading) || 0
   const consumption = Math.max(0, pres - prev)
 
-  const rates = classification === 'Commercial' ? tariff.commercial : tariff.residential
+  const classKey = classification.toLowerCase()
+  const rates = classKey === 'commercial'
+    ? tariff.commercial
+    : classKey === 'institutional'
+    ? tariff.institutional
+    : tariff.residential
+
   let baseAmount = 0
-  let bracketBreakdown = []
+  const bracketBreakdown = []
 
   if (consumption <= rates.minCuM) {
     baseAmount = rates.minCharge
-    bracketBreakdown.push({ label: `Minimum Charge (0-${rates.minCuM} m³)`, cuM: consumption, rate: rates.minCharge, amount: rates.minCharge })
+    bracketBreakdown.push({ label: `Minimum Charge (0–${rates.minCuM} m³)`, cuM: consumption, rate: rates.minCharge, amount: rates.minCharge })
   } else {
     baseAmount = rates.minCharge
     bracketBreakdown.push({ label: `Minimum Charge (First 10 m³)`, cuM: 10, rate: rates.minCharge, amount: rates.minCharge })
-    
+
     let remaining = consumption - 10
 
-    // Bracket 1: 11-20 m³ (max 10 m³)
+    // Bracket 1: 11–20 m³ (max 10 m³)
     const b1CuM = Math.min(10, remaining)
     const b1Amount = b1CuM * rates.bracket1
     baseAmount += b1Amount
-    bracketBreakdown.push({ label: `11 - 20 m³`, cuM: b1CuM, rate: rates.bracket1, amount: b1Amount })
+    bracketBreakdown.push({ label: `11–20 m³`, cuM: b1CuM, rate: rates.bracket1, amount: b1Amount })
     remaining -= b1CuM
 
-    // Bracket 2: 21-30 m³ (max 10 m³)
+    // Bracket 2: 21–30 m³ (max 10 m³)
     if (remaining > 0) {
       const b2CuM = Math.min(10, remaining)
       const b2Amount = b2CuM * rates.bracket2
       baseAmount += b2Amount
-      bracketBreakdown.push({ label: `21 - 30 m³`, cuM: b2CuM, rate: rates.bracket2, amount: b2Amount })
+      bracketBreakdown.push({ label: `21–30 m³`, cuM: b2CuM, rate: rates.bracket2, amount: b2Amount })
       remaining -= b2CuM
     }
 
