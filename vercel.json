@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd my-react-app && npm install && npm run build",
+  "outputDirectory": "my-react-app/dist",
+  "installCommand": "cd my-react-app && npm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

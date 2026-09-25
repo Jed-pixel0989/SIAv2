@@ -1,0 +1,78 @@
+.field-staff-navigation {
+  position: relative;
+  z-index: 40;
+  flex: 0 0 auto;
+}
+
+.field-staff-menu-toggle {
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  background: #e8f0f2;
+  box-shadow: 6px 6px 14px rgba(157, 178, 185, .38), -6px -6px 14px rgba(255, 255, 255, .86);
+  cursor: pointer;
+}
+
+.field-staff-menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: #087fba;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.field-staff-navigation.is-open .field-staff-menu-toggle span:first-child { transform: translateY(6px) rotate(45deg); }
+.field-staff-navigation.is-open .field-staff-menu-toggle span:nth-child(2) { opacity: 0; }
+.field-staff-navigation.is-open .field-staff-menu-toggle span:last-child { transform: translateY(-6px) rotate(-45deg); }
+.field-staff-menu-toggle:active { box-shadow: inset 4px 4px 10px rgba(157, 178, 185, .3), inset -4px -4px 10px rgba(255, 255, 255, .8); }
+
+.field-staff-menu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  display: grid;
+  gap: 5px;
+  width: 190px;
+  padding: 9px;
+  border-radius: 16px;
+  background: #e8f0f2;
+  box-shadow: 9px 9px 20px rgba(157, 178, 185, .42), -9px -9px 20px rgba(255, 255, 255, .9);
+}
+
+.field-staff-menu button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 11px;
+  color: #6a8188;
+  background: transparent;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.field-staff-menu button:hover { color: #087fba; background: rgba(255, 255, 255, .35); }
+.field-staff-menu button.active { color: #087fba; background: #e8f0f2; box-shadow: inset 3px 3px 8px rgba(157, 178, 185, .25), inset -3px -3px 8px rgba(255, 255, 255, .8); }
+.field-staff-menu .field-menu-signout { margin-top: 4px; border-top: 1px solid rgba(157, 178, 185, .28); border-radius: 0 0 11px 11px; color: #b45353; }
+.field-staff-menu .field-menu-signout:hover { color: #a33f3f; background: rgba(243, 223, 225, .5); }
+.field-menu-icon { display: grid; place-items: center; width: 26px; font-size: 17px; }
+.field-staff-menu button b { margin-left: auto; min-width: 18px; padding: 2px 5px; border-radius: 9px; color: #fff; background: #d97706; text-align: center; font-size: 10px; }
+
+.field-portal-header .field-staff-navigation { align-self: flex-start; }
+.field-portal-header .field-staff-menu { left: 0; }
+
+@media (max-width: 680px) {
+  .field-staff-shell .topbar { position: relative; align-items: center; }
+  .field-staff-shell .field-staff-navigation { order: -1; }
+  .field-staff-shell .breadcrumb { flex: 1 1 auto; }
+}

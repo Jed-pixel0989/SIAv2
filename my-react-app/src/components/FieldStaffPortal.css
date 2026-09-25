@@ -1,0 +1,103 @@
+:root {
+  --field-ink: #17313b;
+  --field-muted: #6a8188;
+  --field-blue: #087fba;
+  --field-teal: #13a993;
+  --field-surface: #e8f0f2;
+  --field-light: rgba(255, 255, 255, 0.9);
+  --field-shadow: rgba(157, 178, 185, 0.45);
+}
+
+.field-portal {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 18px 18px 100px;
+  color: var(--field-ink);
+  background: var(--field-surface);
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+.field-portal-header,
+.field-portal-welcome,
+.field-portal-priority,
+.field-portal-actions,
+.field-portal-consumers,
+.field-portal-map-section,
+.field-portal-work {
+  width: min(100%, 520px);
+  margin: 0 auto;
+}
+
+.field-portal-header { display: flex; align-items: center; justify-content: space-between; }
+.field-portal-brand { display: flex; align-items: center; gap: 11px; }
+.field-portal-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; color: #fff; background: var(--field-blue); box-shadow: 5px 5px 12px var(--field-shadow), -5px -5px 12px var(--field-light); }
+.field-portal-brand span { display: block; color: var(--field-blue); font-size: 9px; font-weight: 900; letter-spacing: .16em; }
+.field-portal-brand strong { display: block; margin-top: 3px; font-size: 14px; }
+.field-portal-signout { width: 38px; height: 38px; border: 0; border-radius: 50%; color: var(--field-muted); background: var(--field-surface); box-shadow: 5px 5px 12px var(--field-shadow), -5px -5px 12px var(--field-light); font-size: 19px; cursor: pointer; }
+.field-portal-signout:active { box-shadow: inset 4px 4px 10px rgba(157, 178, 185, .3), inset -4px -4px 10px var(--field-light); }
+
+.field-portal-welcome { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; padding: 52px 0 25px; }
+.field-portal-eyebrow { color: var(--field-teal); font-size: 10px; font-weight: 900; letter-spacing: .13em; }
+.field-portal-welcome h1 { margin: 9px 0 8px; font: 500 clamp(31px, 9vw, 44px)/1 Georgia, serif; letter-spacing: 0; }
+.field-portal-welcome p { max-width: 280px; margin: 0; color: var(--field-muted); font-size: 12px; line-height: 1.5; }
+.field-portal-status { display: inline-flex; align-items: center; gap: 6px; padding: 8px 11px; border-radius: 11px; color: #16806d; background: var(--field-surface); box-shadow: inset 3px 3px 8px rgba(157, 178, 185, .25), inset -3px -3px 8px var(--field-light); font-size: 10px; white-space: nowrap; }
+.field-portal-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--field-teal); }
+
+.field-portal-priority { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.field-portal-priority div { padding: 15px 10px; border-radius: 16px; background: var(--field-surface); box-shadow: 5px 5px 12px var(--field-shadow), -5px -5px 12px var(--field-light); }
+.field-portal-priority strong { display: block; color: var(--field-blue); font-size: 24px; }
+.field-portal-priority span { display: block; margin-top: 4px; color: var(--field-muted); font-size: 10px; line-height: 1.2; }
+
+.field-portal-actions,
+.field-portal-work { padding-top: 32px; }
+.field-portal-section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
+.field-portal-section-head h2 { margin: 0; font-size: 17px; }
+.field-portal-section-head > span { color: var(--field-muted); font-size: 9px; font-weight: 900; letter-spacing: .15em; }
+.field-portal-section-head button { border: 0; color: var(--field-blue); background: transparent; font-size: 11px; cursor: pointer; }
+.field-portal-action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+.field-portal-action-grid button { display: grid; grid-template-columns: 43px 1fr; column-gap: 10px; align-items: center; min-height: 72px; padding: 14px; border: 0; border-radius: 17px; color: var(--field-ink); text-align: left; background: var(--field-surface); box-shadow: 6px 6px 14px var(--field-shadow), -6px -6px 14px var(--field-light); cursor: pointer; }
+.field-portal-action-grid button:active { box-shadow: inset 5px 5px 11px rgba(157, 178, 185, .3), inset -5px -5px 11px var(--field-light); }
+.field-action-icon { grid-row: span 2; display: grid; place-items: center; width: 43px; height: 43px; border-radius: 14px; font-size: 20px; box-shadow: inset 3px 3px 8px rgba(157, 178, 185, .2), inset -3px -3px 8px var(--field-light); }
+.field-action-icon.blue { color: var(--field-blue); background: #d8edf2; }
+.field-action-icon.teal { color: var(--field-teal); background: #d8f0eb; }
+.field-action-icon.amber { color: #a77621; background: #f2ebd5; }
+.field-action-icon.slate { color: #5d7280; background: #dfe8eb; }
+.field-portal-action-grid strong { font-size: 12px; }
+.field-portal-action-grid small { margin-top: 4px; color: var(--field-muted); font-size: 10px; }
+
+.field-portal-consumers { padding-top: 32px; }
+.field-consumer-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(157, 178, 185, .3); }
+.field-consumer-location { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 11px; color: var(--field-muted); background: #dfe8eb; font-size: 18px; }
+.field-consumer-location.is-pinned { color: var(--field-blue); background: #d8edf2; }
+.field-consumer-details { min-width: 0; }
+.field-consumer-details strong, .field-consumer-details span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.field-consumer-details strong { font-size: 12px; }
+.field-consumer-details span { margin-top: 4px; color: var(--field-muted); font-size: 10px; }
+.field-consumer-phone { color: var(--field-blue); font-size: 10px; text-align: right; text-decoration: none; white-space: nowrap; }
+.field-consumer-phone:hover { text-decoration: underline; }
+
+.field-portal-map-section { padding-top: 32px; }
+.field-portal-map { height: 290px; overflow: hidden; border: 1px solid rgba(157, 178, 185, .35); border-radius: 17px; box-shadow: 5px 5px 12px var(--field-shadow), -5px -5px 12px var(--field-light); }
+.field-map-empty { margin: 10px 0 0; color: var(--field-muted); font-size: 11px; }
+
+.field-job-row { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 11px; width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid rgba(157, 178, 185, .3); color: var(--field-ink); text-align: left; background: transparent; cursor: pointer; }
+.field-job-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 12px; color: #a77621; background: #f2ebd5; box-shadow: inset 3px 3px 8px rgba(157, 178, 185, .2), inset -3px -3px 8px var(--field-light); }
+.field-job-row strong, .field-job-row small { display: block; }
+.field-job-row strong { font-size: 12px; }
+.field-job-row small { margin-top: 4px; color: var(--field-muted); font-size: 10px; }
+.field-job-row em { color: var(--field-teal); font-size: 10px; font-style: normal; }
+.field-job-row.is-tracked { color: #991b1b; }
+.field-job-row.is-tracked .field-job-icon { color: #b91c1c; background: #fee2e2; }
+.field-tracking-status { display: flex; align-items: center; gap: 7px; margin: 0 0 8px; color: var(--field-muted); font-size: 10px; }
+.field-tracking-dot { width: 7px; height: 7px; border-radius: 50%; background: #dc2626; box-shadow: 0 0 0 4px #fee2e2; }
+.field-empty-state { display: flex; align-items: center; gap: 12px; padding: 18px; border-radius: 17px; box-shadow: inset 4px 4px 10px rgba(157, 178, 185, .25), inset -4px -4px 10px var(--field-light); }
+.field-empty-state > span { color: var(--field-teal); font-size: 23px; }
+.field-empty-state strong { font-size: 12px; }
+.field-empty-state p { margin: 4px 0 0; color: var(--field-muted); font-size: 10px; }
+
+.field-portal .field-staff-mobile-bottom-nav { position: fixed; right: 0; bottom: 0; left: 0; z-index: 20; display: flex; justify-content: center; gap: 2px; padding: 10px 6px calc(10px + env(safe-area-inset-bottom)); background: var(--field-surface); box-shadow: 0 -7px 18px rgba(157, 178, 185, .2); }
+.field-portal .field-nav-btn { display: grid; justify-items: center; gap: 4px; flex: 1; min-width: 0; max-width: 90px; height: auto; border: 0; color: var(--field-muted); background: transparent; font-size: 9px; cursor: pointer; }
+.field-portal .field-nav-icon { font-size: 18px; }
+.field-portal .field-nav-btn.active { color: var(--field-blue); }
+
+@media (min-width: 760px) { .field-portal { display: block; padding-top: 50px; } }
